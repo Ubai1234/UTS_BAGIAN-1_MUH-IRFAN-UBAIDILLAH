@@ -38,18 +38,19 @@ app.use(cors({
   origin: [
     'http://localhost:3002', // Frontend
     'http://localhost:3000', // Gateway itself
-    'http://frontend-app:3002' // Docker container name
+    'http://frontend-app:3002', // Docker container name
+    'https://studio.apollographql.com'
   ],
   credentials: true
 }));
 
 // Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.'
-});
-app.use(limiter);
+//const limiter = rateLimit({
+//  windowMs: 15 * 60 * 1000, // 15 minutes
+//  max: 100, // limit each IP to 100 requests per windowMs
+//  message: 'Too many requests from this IP, please try again later.'
+//});
+// app.use(limiter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

@@ -1,8 +1,8 @@
-# Development environment
-version: '3.8' # Peringatan: 'version' sudah usang, tapi kita biarkan saja
+
+version: '3.8' 
 
 services:
-  # REST API Service
+
   rest-api:
     build: ./services/rest-api
     ports:
@@ -13,13 +13,12 @@ services:
     volumes:
       - ./services/rest-api:/app
       - /app/node_modules
-    # === MODIFIKASI: Menjalankan 'npm install' saat container start ===
-    # Ini untuk memperbaiki error 'Cannot find module bcryptjs'
+
     command: sh -c "npm install && npm run dev"
     networks:
       - microservices-network
 
-  # GraphQL API Service
+
   graphql-api:
     build: ./services/graphql-api
     ports:
@@ -30,7 +29,6 @@ services:
     volumes:
       - ./services/graphql-api:/app
       - /app/node_modules
-    # Service ini sudah berjalan, jadi 'command' asli tetap dipertahankan
     command: npm run dev
     networks:
       - microservices-network
@@ -51,8 +49,7 @@ services:
     volumes:
       - ./api-gateway:/app
       - /app/node_modules
-    # === MODIFIKASI: Menjalankan 'npm install' saat container start ===
-    # Ini untuk memperbaiki error 'Cannot find module axios'
+  
     command: sh -c "npm install && npm run dev"
     networks:
       - microservices-network

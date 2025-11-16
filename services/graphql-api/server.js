@@ -18,7 +18,8 @@ app.use(cors({
     'http://localhost:3000', 
     'http://localhost:3002', 
     'http://api-gateway:3000', 
-    'http://frontend-app:3002' 
+    'http://frontend-app:3002',
+    'https://studio.apollographql.com' 
   ],
   credentials: true
 }));
